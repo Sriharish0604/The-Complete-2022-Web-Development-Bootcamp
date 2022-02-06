@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <h1>My Contact Details</h1>
+    <p><strong>Address:</strong><em> My Address</em></p>
+    <p><strong>Phone Number:</strong><em> 0123456789</em></p>
+    <p><strong>Email ID:</strong><em> email@gmail.com</em></p>
+    <hr>
+
+    <!-- Html form -->
+    <!-- "action" is what to do after form is submitted. Here the form details will be sent to the email associated with the default email app because method is "POST". "enctype" is plain text for text encoding the details in readable format in mail-->
+    <form action="mailto:hanichh39@gmail.com" method="POST" enctype="text/plain">
+        <label>Your Name:</label> <!-- The field name in the form-->
+        <input type="text" name="yourName" value=""> <!-- To allow user to input the name. the "name" attribute will identify the data which is inside each of the input's and in mail it will display as yourName="Name entered"-->
+        <br> <!-- There are many input types like "color" for color picker,"date" for date picker, "checkbox","file" to upload a file,"radio" for radio button, "range" which a range slider,"password" to enter password-->
+        <label>Your Email:</label>
+        <input type ="email" name="yourEmail"><br>
+        <label>Your Message:</label><br>
+        <textarea name = "yourMessage" rows = "10" cols="30"></textarea><br> <!-- Text area - Rows determine initially how tall text area should be and cols determine how wide it should be. This text area can be increased or decreased in size -->
+        <input type="submit" name=""> <!-- to allow user to click on submit button-->
+    </form>
+</body>
+
+</html>

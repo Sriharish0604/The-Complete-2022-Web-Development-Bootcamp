@@ -1,0 +1,129 @@
+<!-- To host the website for free. Use github. Upload the project folder to github. Goto Settings, Scroll to github pages, Choose "main branch" instead of None in drop down and click save. After some time the website is published-->
+<!-- codepen.io - website to look at how html css javascript files will be rendered -->
+<!-- To view the code of any webpage use chrome and right click and click on inspect-->
+
+<!-- Below is a boilerplate or template for default code that can be reused
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+-->
+
+<!-- tell the browser what type of document it is going to render and what version of html is being used-->
+<!DOCTYPE html>
+<html lang="en">
+<!-- The html code consists of two parts head - tells about the webpage , body - has the webpage contents-->
+
+<head>
+    <meta charset="UTF-8"> <!-- the unicode character set that is being used. Even emojis are part of the character set. Helps to render webpage correctly on browsers from international visitors. <meta name="description" content="Free Web tutorials"> will help search engine to find this webpage if keywords match description-->
+    <title>📚 Sriharish Learning HTML</title>
+    <link rel="stylesheet" href="css/styles.css"><!--external css file linked to this file using the appropriate relative path. "/css/styles.css" will imply that the file is present in css folder from the root directory of the website. Used only when website is hosted -->
+    <!-- If the same attribute in the same element eg. background colour of <body> is blue in external css, red in internal css and white in inline css the output or importance order is inline>internal>external
+        so inline and internal can be used to make more specific styles on top of the global external css style. Try to use as much external css as possible-->
+
+</head>
+
+<body>
+    <!-- The <table> tag is used to create tables. A table can be in 3 sections <thead> - table head, <tbody> - table body, <tfoot> - table footer. Its a good practice to divide the table into these sections so that while styling using css each section can be styled in a separate way
+    <th> is to specify table headings <tr> is used to define table row <td> to define table data. The <table> has many attributes like border,
+    colour, cellspacing etc. but these attributes are deprecated as styling is purely css and not part of html code. 
+    Tables can also be used for defining layouts to the webpage like here text appears to the side of the image -->
+    <table cellspacing="10">
+        <tr>
+            <td>
+                <!-- <img src> tag is a self closing tag. It takes the source link of the photo and also has an atrribute "alt" which is alternative text if the image is not rendered by the browser. The text in alt attribute can help search engines in finding your website based on keywords-->
+                <!-- If the source is from the internet then everytime the browser will have to ping the server where the image is hosted download the image and then display it. The server maybe down as well. Hence it's better to have the image saved locally.-->
+                <img src="images/sriharishpic.jpg" alt="Sriharish Profile Picture">
+            </td>
+            <td>
+                <h1>Sriharish</h1>
+                <!-- use <em> for italicized and <strong> for bold instead of <i> and <b> because the former gives emphasis to the content latter is just formatting. Example - The <strong>Internet</strong> is important. <b>HTML:</b> A Markup Language. <strong> is used for emphasis and <b> for styling purposes-->
+                <p><em>Associate Software Engineer at <strong><a href="https://www.bosch-softwaretechnologies.com/en/"> Bosch Global Software Technologies </a></strong></em></p>
+                <p>I finished my undergraduate degree in Computer Science and Engineering from Amrita School of
+                    Engineering. I 💚 learning and experimenting new technologies.</p>
+            </td>
+        </tr>
+    </table>
+
+    <!-- there are tags that do not need a closing tag like (self-closing tags)
+    <br> which is line break i.e to goto next line
+    <hr> make a horizontal line. tags have attributes like <hr size = 3 noshade> here, hr is the element and size is the attribute-->
+
+    <hr>
+    <h3>Educational Qualifications</h3>
+
+    <!-- <ul> is an unordered list and <ol> is an ordered list and the type = 'I' attribute means roman numerals-->
+    <ul>
+        <li>B.Tech 2021</li>
+        <li>12th Grade CBSE 2017</li>
+        <li>10th Grade ICSE 2015</li>
+    </ul>
+    <hr>
+
+    <table cellspacing="10">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Position</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>July 2021</td>
+                <td>Associate Software Engineer at Bosch</td>
+            </tr>
+            <tr>
+                <td>April 2021</td>
+                <td>Intern at Bosch</td>
+            </tr>
+        </tbody>
+        <tfoot></tfoot>
+    </table>
+    <hr>
+    <h3>Skills</h3>
+    <!-- The outer table is to layout the skills side by side. The inner table is to store the skill name and the rating-->
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td>Python Programming</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td>Web Development</td>
+                        <td>⭐⭐</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>Machine learning</td>
+                        <td>⭐⭐⭐</td>
+                    </tr>
+                    <tr>
+                        <td>Databases</td>
+                        <td>⭐⭐⭐⭐</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <hr>
+    <!-- The <a> tag is responsible for making HTML as Hypertext that is move from one webpage to another. href attribute is the destination link. The destination link can also point to a page that you create as a part of the website. The words between the start and end tag are the words that will hold the link-->
+    <h3><a href="hobbies.html">Hobbies</a></h3>
+    <h3><a href="contact-me.html">Contact Me</a></h3>
+</body>
+
+</html>
+

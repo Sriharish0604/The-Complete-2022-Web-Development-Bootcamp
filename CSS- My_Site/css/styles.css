@@ -1,0 +1,86 @@
+/*A favicon is a favourite icon present in the title of the browser tab. Earlier the icon used to show up only if a person had "favourited" the webpage. Today irrespective the icon can be seen. 
+go to favicon.cc and make your favourite icon*/
+/* By default certain html elements will have default attribute values given by the browser. the css files overrides the browser defaults
+For eg. <body> has a margin of 8px, to remove that set margin explicitly to 0% or 0px*/
+
+/***************************CSS display property*************************/
+
+/*CSS has a property called display property. This property has 4 different values - block, inline, inline-block,none
+block- the html element takes the entire width of the page. eg <h1-h6> , <p>,<div>,list and list items <li><ol><ul>, <form>by default are block display
+inline- the html element takes the height and width that is required and not entire page width. Other html elements can appear in the same line. <span> is an inline display element which can be used to create a different layout for a group of letters or words in a <p> element. other eg. <img> <a>. The problem with inline elements is the width of the element cannot be defined explicitly
+To make a block element as in line use "display:inline;" in style definition of that block element
+inline-block - the html element is inline and at the same time the width can be adjusted explicitly. By default, images are inline-block.
+none - the html element is not displayed. Appears as though that element never existed but is present in code. Useful when creating a quiz and want to hide answers. a property "visibility:hidden;" is similar but the difference is here the element cannot be seen but the space occupied by that element remains unlike display:none where even the space occupied is removed.*/
+
+/*Position of elements on screen are determined by the box model, the size of the margins, the borders, width and height of actual element, whether its display block,inline or none etc. */
+
+/***************************CSS Positioning***************************/
+
+/* HTML elements already have a set of predefined rules on how it should be displayed on the website even without any css
+1)in case of DEFAULT or predefined rules, the dimensions is based on content in the case of inline display and in block elements the height is dependent on content
+2) Order of elements on screen come from the order in HTML code
+3) Children sit on top of parents => if <h1> in <div> it appears the <h1> is closer to viewer and away from screen giving rise to z-index i.e z-axis. if <div> having background colour as red is on top of <h1> then <h1> would not be seen. if <span> is in <h1> then that sits on top of <h1>
+These are the default ways in which html elements are rendered without any css.*/
+
+/*Positioning elements using the CSS property, position
+static - all html elements are static by default => go with the html rules. Basically how it will look if position property is not changed
+relative - position the element that is selected relative to how it would have been positioned had it been static. eg. if an image is in static position, then img { position:relative; left:30px;} would mean keep a space of 30px between the old left edge of image and the new left edge. Basically adding a margin relative to where the element should have been
+There is 4 of the coordinate property i.e left,right,top,bottom. e.g if top:50px; then the image is moved downwards by 50px;
+Remember that when you move an element that has relative positioning, it doesn't affect the position of anything else on the screen, 
+absolute - adding a margin to it's parent element. e.g div { position:relative;} img { position:absolute; right:30px; } here div is the parent element. so the image will be 30px to the left of the div margin. instead of 30px to the left of its previous position. Absolute positioning affects the flow of other html elements around it unlike relative which doesn't affect other html elements positions.
+fixed - the html element continues to stay on the page even while scrolling. e.g a nav bar or a side bar can be fixed as user scrolls
+*/
+
+/***************************CSS Font Styling***************************/
+
+/*There are major font families 1) Serif - Default font-family and serif has little feet e.g 'I'. The default font is Times font 2)Sans-Serif - has no feet e.g i would be like'|'. The default font is Arial 3)Monospace - each of the characters take the same amount of width. Usually used in coding. 4)Fantasy - Not used much 5)Cursive - Not used much*/
+
+body {
+    margin: 0%;
+    /*Text-align center will center all the block and inline html child elements. However if width is explicitly set in one of the child elements which is a block then that element will no longer be centered*/
+    text-align: center;
+    /*All the elements within the body will have the verdana font. If the browser or the OS doesn't have this font then the website will be displayed in the default sans-serif font
+    To prevent the issue of browser not rendering a particular font, there are a list of set of web safe fonts that can be used where almost all browsers can render correctly. Actually no font is 100% safe as everyone doesn't have that particular font installed
+    Fallback is basically going to a more general font if the specific one is not available. If verdana is not available then fallback to sans-serif.
+    If the web developer wants all users to see the spl. font irrespective of whether the users have that font preinstalled or not then use font embeddings.
+    Go to google fonts and search for the font family, 
+    font-family: Verdana, sans-serif;
+}
+
+h1 {
+    margin-top: 0%;
+    /*Here <h1> will not be aligned to the center as width is explicitly set, set the top and bottom margin to 0 and left and right to auto which is based on content width and is horizontally centered
+    width:10%;
+    margin: 0 auto 0 auto; top right bottom left, if only 2 values specified then top and bottom is 1st value, right and left is 2nd value*/
+}
+
+.top-container {
+    background-color: #E4F9F5;
+    padding-top: 100px;
+    /*the top-container is a parent to the top-cloud, bottom-cloud class. To move the clouds based on the top-container, make top-container as relative.*/
+    position:relative;
+}
+
+.top-cloud {
+    /*The top-cloud will move relative to the top-container*/
+    position: absolute;
+    right: 300px;
+    top:50px;
+}
+
+.bottom-cloud {
+    position: absolute;
+    left:300px;
+    bottom: 300px;
+}
+.middle-container {
+    background-color: red;
+    height: 200px;
+    width: 200px;
+}
+
+.bottom-container {
+    background-color: blue;
+    height: 200px;
+    width: 200px;
+}

@@ -1,17 +1,72 @@
 /*This is how a css file can be commented*/
+/* The problem with using just HTML for styling is the layout starts getting messy for e.g to display image and text side by side tables had to be created which made the code long and wordy.
+It's easy to make syntax errors when dealing with tables and for more complex situations you will have to embed multiple tables, deal with different rows and columns and so on.
+To make things simpler CSS - Cascading Style sheets are used. */
+
+/****************** There are 3 ways to change the style of a HTML page.***************************/
+
+/* Inline CSS - Using CSS attributes in the HTML tags. By using style attribute you can enter css code as a value to the attribute.
+To change the background colour of the webpage, add style attribute to the <body> tag.
+e.g <body style="background-color: blue;"> The colour can be defined by using a valid CSS color like "blue", "red" etc. or using hex values like #EAF6F1.
+The problem with inline CSS is if you want to make all <p> tags have a particular style then you have to go to each <p> tag and add the CSS style attribute which can be cumbersome.
+Also if you want to change that style later, changes will have to be made in each of the tags which is again tiresome. That's where Internal CSS helps*/
+
+/* Internal CSS - Here the styles can be changed for all the tags present in the html file unlike Inline CSS which allows to change only one element at a time.
+Under the <head> tag below <title> tag you can define a <style> tag. E.g to change the background color of the webpage -
+
+<head>
+<title></title>
+<style> /* choose what elements styling you would like to change, what kind of style and what is the value
+body { 
+    background-colour: #EAF123;
+    }
+</style>
+</head>
+Every element in a html page is made up of boxes so you can control the height, width, border style of those bxes using CSS*/
+
+/* External CSS - Imagine that the background color will have to be changed to multiple webpages across the website. The same internal CSS code will have to be copied to each of the pages.
+This can again get cumbersome. So external CSS is used where changes made gets reflected in the entire website wherever that element exists.
+So create a css folder in the project with styles.css file and add all the styles there. The styles need to get reflected in the webpages.
+
+<head>
+<title></title>
+<link rel="stylesheet" href="css/styles.css> /* This means the link has a relationship with a stylesheet and that stylesheet can be found in the href atribute path.
+</head> /* The browser will take all the styling from this external css file and apply to the current html file. */
+
+/* Note:- When the same style property is defined for the same element in external, internal and inline, the browser gives the inline css the highest priority. 
+e.g if inline <body> color is white, internal is red, external is blue, then the webpage color is white based on priority. 
+Usually always use external CSS, Internal and inline css are used when the styles are to be applied for elements at very specific places in the html page*/
+
+/**********************CSS code Debugging****************/
+/*Use chrome developer tools to check the code. Open that and if in the console there are any errors, those errors can be known and fixed rather than wasting time going through the code line by line searching for the error.
+To view the elements styles click on elements in the developer tools, choose a tag/element and click on styles. */
+
+/******************************************CSS SYNTAX**********/
+/* selector { property : value; } /* Selector is "who to change, i.e which html element's style to change, "what property or style you want to change" in that element, "how much" you want that property property to change for that element*/
+/* Don't forget the ":" and the ";" in the syntax. As a general practice, order the properties under each tag or element in alphabetical order so that it's easy to debug the code.*/
+
+
 /*****************************************TAG SELECTORS**********************/
 
 body {
-    background-color:#EAF6F6;
+    background-color:#EAF6F6;/*color pallettes can be chosen from the website colorhunt.co */
 }
 
+/* The browser applies some default CSS for every webpage even though we do not have CSS code. For eg. the defaults applied for <hr> tag by the browser are -
+    display: block;
+    border-style: inset;
+    border-width: 1px;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+*/
 hr {
-    border-style: none;
-    border-top-style: dotted;
     border-color: grey;
-    width: 5%;
-    border-width: 5px;
-    
+    border-style: none; /* If a value is specified here, it is applicable to all four sides of the element i.e top bottom left and right*/
+    border-top-style: dotted; /*To specify that only the top has dotted style. Rest like bottom, left and right have border style set to None*/    
+    border-width: 5px; 
+    width: 5%;         /*The width is specified in % instead of px so that the width changes accordingly to the user device like phone or laptop.*/    
 }
 
 h1 {
@@ -22,14 +77,75 @@ h3 {
     color: #66BFBF;
 }
 
-/*Class selectors is used when multiple html elements are to be styled in the same way. ID selector can be used on only one html element and cannot be repeated.
+img {
+    height: 275px;
+    width: 275px;
+    border-radius: 100%;
+}
+
+/*****************************************CLASS SELECTORS**********************/
+
+/*If you want different images to have different background colors, it's not possible by just using tag selectors because it applies to all images because it looks for <img> element in the html file and applies the property.
+To achieve different colors, "class" attribute is being used for elements. This means all elements having the same class will get the same style properties.
+e.g In the index.html file give <img class="class1" src="path1" alt="image1"> and for another image <img class="class2" src="path2" alt="image2">
+
+Now in the css file, instead of defining background-color property in "img" selector, define it in the class.
+
+.class1 {
+    background-color: red;
+        }
+
+.class2{
+    background-color: green;
+        }
+
+Use classes when you have a set of images that needs one background color and another set of images need another color.
+Also if the tag selector had a property for <img> selector to set background-color: blue, the class selector will override the style and apply red or green respectively for those image elements that have the classes as attributes.*/
+/*
+
+ID selector can be used on only one html element and cannot be repeated.
 The class and the id selectors override the properties defined in the global level i.e the tag selectors.
 A html element can have multiple class selectors associated with it whereas multiple ids are not possible. Use ids sparingly
 A Pseudo class is properties in css with a ":" before the property name. eg. :hover. An image can have one background colour and another when hovered over i.e html element state changes */
-/*****************************************CLASS SELECTORS**********************/
-
-
-
 
 
 /*****************************************ID SELECTORS**********************/
+/* An ID selector is similar to that of a class selector, 
+If you want different headings to have different text colors, it's not possible by just using tag selectors because it applies to all headings because it looks for <h1> element in the html file and applies the property.
+To achieve different colors, "id" attribute is being used for elements. This means the element having that id will get the same style properties defined in the stylesheet.
+e.g In the index.html file give <h1 id="id1"> and for another heading <h1 id="id2">
+
+Now in the css file, instead of defining color property in "h1" selector, define it in the id.
+
+#id1 {
+    color: red;
+        }
+
+#id2{
+    color: green;
+        }
+
+ID selector can be used on only one html element and cannot be repeated. Giving another element the same ID is an error.
+
+/*********Summary Classes vs IDS*****/
+
+
+/*The class and the id selectors override the properties defined in the global level i.e the tag selectors.
+A html element can have multiple class selectors associated with it whereas multiple ids are not possible. 
+e.g if you want the background images to be circular, in index.html use <img class="class1 class3" src="path1" alt="image1"> where class1 is for background color and class 3 is for circular.
+Defining class 3 in css,
+
+.class3 {
+    border-radius:100%;
+       }
+
+Now the image will have red background which is circular as well.
+
+Use ids sparingly you cannot have <h1 id="id1 id2"> or use these ids again anywhere in the code. 
+A Pseudo class is properties in css with a ":" before the property name. eg. :hover. An image can have one background colour and another when hovered over i.e html element state changes 
+eg. 
+img:hover {
+    background-color:gold;
+        }
+So when the image originally has one color but when hovered the background color changes to gold.*/
+

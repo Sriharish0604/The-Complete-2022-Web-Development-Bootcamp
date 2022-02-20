@@ -1,34 +1,125 @@
 /*A favicon is a favourite icon present in the title of the browser tab. Earlier the icon used to show up only if a person had "favourited" the webpage. Today irrespective the icon can be seen. 
-go to favicon.cc and make your favourite icon*/
-/* By default certain html elements will have default attribute values given by the browser. the css files overrides the browser defaults
-For eg. <body> has a margin of 8px, to remove that set margin explicitly to 0% or 0px*/
+go to favicon.cc and make your favourite icon.
+In the index.html file add this line so that the favicon is linked and will be visible when the page is loaded.  <link rel="icon" href="favicon.ico"> 
+*/
 
-/***************************CSS display property*************************/
+/* By default certain html elements will have default attribute values given by the browser. the css files overrides the browser defaults
+For eg. <body> has a margin of 8px, to remove that set margin explicitly to 0% or 0px
+body {
+    margin:0; /*This will override the default margin values added by the browser. On all four sides the margin is set to 0.
+    }
+However if there is <h1> inside a <div>, making top margin 0 for the entire <body> wont push the <h1> up because it has it's own defaults too. So margin for <h1> also needs to be changed to 0.
+*/
+
+/**************************CSS Box Model*********************************/
+/*Every element is represented as a box in HTML. for example if image width = 100% then the box surrounding the image becomes a picture with 100% width thereby scaling the image in the process.
+Other boxes get pushed based on the specifications. so height: and width: can be taken care. 
+Border:- border:solid will not reduce the size of the block instead if block size = 300px X 300px and if border-width =50px then that new block size is 400px X 400px.
+Padding:- Gives space between text and a element. These increase the size of the box.
+Margin:- Is a buffer space between the current element and any other element on the screen. 
+Any time a HTML element is inspected using Chrome developer tools the box model is always shown.
+
+
+
+/***************************CSS Display property*************************/
 
 /*CSS has a property called display property. This property has 4 different values - block, inline, inline-block,none
-block- the html element takes the entire width of the page. eg <h1-h6> , <p>,<div>,list and list items <li><ol><ul>, <form>by default are block display
-inline- the html element takes the height and width that is required and not entire page width. Other html elements can appear in the same line. <span> is an inline display element which can be used to create a different layout for a group of letters or words in a <p> element. other eg. <img> <a>. The problem with inline elements is the width of the element cannot be defined explicitly
-To make a block element as in line use "display:inline;" in style definition of that block element
+block- the html element takes the entire width of the page. eg <h1-h6> , <p>,<div>,list and list items <li><ol><ul>, <form> by default are block display
+
+inline- the html element takes the height and width that is required and not entire page width. Other html elements can appear in the same line. <span> is an inline display element which can be used to create a different layout for a group of letters or words in a <p> element. 
+eg. <p> a <span class="class1">pro</span>grammer</p>, here class can be defined in css to underline the word "pro". 
+other eg. of inline elements are <img> <a>. The problem with inline elements is the width of the element cannot be defined explicitly like how it can be specified for block elements.
+To make a block element as inline use "display:inline;" in style definition of that block element. Then the width cannot be changed as it has become inline type of display. And multiple elements will be on the same line.
+Similarly, to make an inline element as block element use "display:block;" in style definition of that inline element. Then the width can be changed as it has become block type of display but each of these elements will be in a new line
+
 inline-block - the html element is inline and at the same time the width can be adjusted explicitly. By default, images are inline-block.
-none - the html element is not displayed. Appears as though that element never existed but is present in code. Useful when creating a quiz and want to hide answers. a property "visibility:hidden;" is similar but the difference is here the element cannot be seen but the space occupied by that element remains unlike display:none where even the space occupied is removed.*/
+
+none - the html element is not displayed. Appears as though that element never existed but is present in code. Useful when creating a quiz and want to hide answers. a property "visibility:hidden;" is similar but the difference is incase of visibility the element cannot be seen but the space occupied by that element remains unlike display:none where even the space occupied is removed.*/
 
 /*Position of elements on screen are determined by the box model, the size of the margins, the borders, width and height of actual element, whether its display block,inline or none etc. */
 
 /***************************CSS Positioning***************************/
 
 /* HTML elements already have a set of predefined rules on how it should be displayed on the website even without any css
-1)in case of DEFAULT or predefined rules, the dimensions is based on content in the case of inline display and in block elements the height is dependent on content
+1)in case of DEFAULT or predefined rules, the dimensions is based on content in the case of inline display width is based on content and in block element as well as inline the height is dependent on content
 2) Order of elements on screen come from the order in HTML code
-3) Children sit on top of parents => if <h1> in <div> it appears the <h1> is closer to viewer and away from screen giving rise to z-index i.e z-axis. if <div> having background colour as red is on top of <h1> then <h1> would not be seen. if <span> is in <h1> then that sits on top of <h1>
+3) Children sit on top of parents => if there is <h1> in <div>, it appears that the <h1> is closer to viewer and away from screen giving rise to z-index i.e z-axis. if <div> having background colour as red is on top of <h1> then <h1> would not be seen. if <span> is in <h1> then that sits on top of <h1>
 These are the default ways in which html elements are rendered without any css.*/
 
 /*Positioning elements using the CSS property, position
 static - all html elements are static by default => go with the html rules. Basically how it will look if position property is not changed
+
 relative - position the element that is selected relative to how it would have been positioned had it been static. eg. if an image is in static position, then img { position:relative; left:30px;} would mean keep a space of 30px between the old left edge of image and the new left edge. Basically adding a margin relative to where the element should have been
 There is 4 of the coordinate property i.e left,right,top,bottom. e.g if top:50px; then the image is moved downwards by 50px;
 Remember that when you move an element that has relative positioning, it doesn't affect the position of anything else on the screen, 
-absolute - adding a margin to it's parent element. e.g div { position:relative;} img { position:absolute; right:30px; } here div is the parent element. so the image will be 30px to the left of the div margin. instead of 30px to the left of its previous position. Absolute positioning affects the flow of other html elements around it unlike relative which doesn't affect other html elements positions.
+If there is a element with red background of width and height = 100px, the position is relative and right:200px, the square can no longer be seen. This is because from the original right edge of the element the element moved 200px to the left with the new right edge 200 px to the left of the old edge.
+
+As a challenge have 3 classes red,blue and yellow which holds elements of height and width = 100px, arrange them such that the 3 elements appear in the same line. For this make display:inline-block.
+To change the color order as blue, yellow red change the relative positioning. 
+.red{
+    background-color:red;
+    display: inline-block;
+    height:100px;
+    width:100px;
+    position: relative;
+    left:200px;
+    }
+.blue{
+    background-color:blue;
+    display: inline-block;
+    height:100px;
+    width:100px;
+    position: relative;
+    right:200px;
+    }
+.yellow{
+    background-color:yellow;
+    display: inline-block;
+    height:100px;
+    width:100px;
+    position: relative;
+    right:200px;
+    }
+
+absolute - adding a margin to it's parent element. e.g div { position:relative;} img { position:absolute; right:30px; } here div is the parent element. so the image will be 30px to the left from the right div margin. instead of 30px to the left of its previous position. Absolute positioning affects the flow of other html elements around it unlike relative which doesn't affect other html elements positions.
+
+eg. to stack the same elements as above but diagonally, first remove the default margins for the body which is the parent element.
+
+body {
+    margin:0;
+     }
+
+.red{
+    background-color:red;
+    display: inline-block;
+    height:100px;
+    width:100px;
+    position: absolute;
+    }
+.blue{
+    background-color:blue;
+    display: inline-block;
+    height:100px;
+    width:100px;
+    position: absolute;
+    top:100px; /*move 100px down from the margin of the body(parent) unlike relative which is 100px down from the top margin of the element itself.
+    left:100px;
+    }
+.yellow{
+    background-color:yellow;
+    display: inline-block;
+    height:100px;
+    width:100px;
+    position: absolute;
+    top:200px;
+    left:200px;
+    }
+Using absolute positioning is slightly easier to use. 
+Imagine a case where there is a div container and the red element is within this container. If the div container is relatively positioned and red element is absolutely postioned then the red element position is absolute with respect to the margins of the div container instead of the body
+
 fixed - the html element continues to stay on the page even while scrolling. e.g a nav bar or a side bar can be fixed as user scrolls
+
+The position property by itself has no meaning. It's the coordinates like top, left,right and bottom which allows the user to see the changes
 */
 
 /***************************CSS Font Styling***************************/
@@ -44,19 +135,85 @@ body {
     Fallback is basically going to a more general font if the specific one is not available. If verdana is not available then fallback to sans-serif.
     If the web developer wants all users to see the spl. font irrespective of whether the users have that font preinstalled or not then use font embeddings.
     Go to google fonts and search for the font family, 
-    font-family: Verdana, sans-serif;
+    font-family: Verdana, sans-serif;*/
+
+    /*This is taken from google fonts and the font will be displayed as is irrepective if the user has the font installed or not. This is an example of font embeddings. 
+    To use this font-family in index.html the font style had to be linked. Use fonts.google.com and add the styles and copy the html and css snippets.
+    The default is serif is internet connection is too slow.*/
+    font-family: 'Merriweather', serif;
+    color: #40514E;
 }
 
 h1 {
-    margin-top: 0%;
-    /*Here <h1> will not be aligned to the center as width is explicitly set, set the top and bottom margin to 0 and left and right to auto which is based on content width and is horizontally centered
+    margin: 50px auto 0px auto;
+    /*Here <h1> which is a block element will not be aligned to the center as width is explicitly set, set the top and bottom margin to 0 and left and right to auto which is based on content width and is horizontally centered
     width:10%;
     margin: 0 auto 0 auto; top right bottom left, if only 2 values specified then top and bottom is 1st value, right and left is 2nd value*/
+    /* google font via font embeddings*/
+
+    font-family: 'Sacramento', cursive;
+    /* font-size can be given in terms of pixels, or % or in terms of em. 100% = 16px so to give 90px it should be 562.5%. 1em = 16px
+    If the user zooms in or zooms out the webpage the font will automatically scale based on the zoom factor if size is determined by % or em.
+    Another consideration is if em or % is used in a parent element and if a value is used in the child element then the child element will have a font size of parent + font size defined in child element.
+    So use "rem" root em that is the size will not depend on the parent element like em or %. Always try using rem. 1 rem = 16px.
+    For margins, padding use px*/
+    font-size: 5.625rem;
+    color: #66BFBF;
+    /* To increase the distance between h1 and surrounding elements. Default is 1. 
+    line-height: 2;
+    */
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem; /*40px*/
+    color: #66BFBF;
+    font-weight: normal;
+    padding-bottom: 10px;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #11999E;
+}
+
+a {
+    color: #313636;
+    font-family: 'Montserrat', sans-serif;
+    margin: 10px 20px 10px 20px;
+    text-decoration: none; /*To remove the underline which is default for all anchor tags*/
+    font-size: 18px;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+p {
+    line-height: 2; /*to give spacing between the elements*/
+}
+
+hr {
+    border: dotted;
+    border-color: #21dfe6;
+    border-width: 6px;
+    border-bottom: none; /*to get only a single line instead of a box of height 0 as border.*/
+    width: 8%;
+    margin: 100px auto 100px auto;
+}
+
+/***************************CSS Float and Clear******************/
+
+
+.pic {
+    height: 275px;
+    width: 275px;
+    border-radius: 100%;
 }
 
 .top-container {
     background-color: #E4F9F5;
-    padding-top: 100px;
+    padding-top: 100px; /*to leave a gap of atleast 100px at the top before any elements part of the container can start.*/
     /*the top-container is a parent to the top-cloud, bottom-cloud class. To move the clouds based on the top-container, make top-container as relative.*/
     position:relative;
 }
@@ -65,22 +222,91 @@ h1 {
     /*The top-cloud will move relative to the top-container*/
     position: absolute;
     right: 300px;
-    top:50px;
+    top:40px;
 }
 
 .bottom-cloud {
     position: absolute;
-    left:300px;
+    left:250px;
     bottom: 300px;
 }
+
+.compscience {
+    text-decoration: underline;
+}
+
+.intro {
+    width: 30%;
+    margin: auto;
+}
+
+/*To get the skill image and the skill text side by side, make the skill image width 50%, this will make the elements lose the properties defined in the parent element.
+for eg. here in the body the elements are to be centered. To regain back that same style use margin with value as "auto" for left and right margins */
+.skill-row {
+    width:50%;
+    margin: 100px auto 100px auto;
+    text-align: left; /*This will override the value of the parent element i.e body*/
+}
+
+/* In css the "clear" property is kind of an anti-float. suppose there is an image on the left and there is a heading and paragraph wrapped around on the right next to the image, if we do not want the paragraph to be wrapped,
+then create a class for this <p> tag and in the class use the property clear:left; this means to clear away anything that's towards the left of the paragraph. This implies that the paragraph has to come below the image. */
+
+.softdev {
+    width:25%; /*The image is a child element of the parent div class "skill-row". This will make the image 25% in size compared to entire size of the div element which itself is 50% width of the body*/
+    float: left; /* This float property of CSS allows to wrap text around the image. Here since it is float left, the image is on the left with the text wrapping right next to the image.
+    Remember to always use float only for wrapping text around elements and not for positioning.*/
+    margin-right: 30px; /*This is to give space between the image and the text*/
+}
+.sports {
+    width:25%;
+    float: right;
+    margin-left: 30px;
+}
+
+.contactmsg {
+    width: 40%;
+    margin: 40px auto 60px auto;
+}
+
+/* To create a button use css3buttongenerator.com and customize the button accordingly. Then paste the code here*/
+
+.btn {
+    background: #11CDD4;
+    background-image: -webkit-linear-gradient(top, #11CDD4, #11999E);
+    background-image: -moz-linear-gradient(top, #11CDD4, #11999E);
+    background-image: -ms-linear-gradient(top, #11CDD4, #11999E);
+    background-image: -o-linear-gradient(top, #11CDD4, #11999E);
+    background-image: linear-gradient(to bottom, #11CDD4, #11999E);
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    background: #30E3CB;
+    background-image: -webkit-linear-gradient(top, #30E3CB, #2BC4AD);
+    background-image: -moz-linear-gradient(top, #30E3CB, #2BC4AD);
+    background-image: -ms-linear-gradient(top, #30E3CB, #2BC4AD);
+    background-image: -o-linear-gradient(top, #30E3CB, #2BC4AD);
+    background-image: linear-gradient(to bottom, #30E3CB, #2BC4AD);
+    text-decoration: none;
+  }
+
 .middle-container {
-    background-color: red;
-    height: 200px;
-    width: 200px;
+    margin: 100px 0px 100px 0px;
 }
 
 .bottom-container {
-    background-color: blue;
-    height: 200px;
-    width: 200px;
+    background-color: #66BFBF;
+    padding: 50px 0px 20px 0px; /* to get the rid of the extra white space below due to the default browser styling.*/
+}
+
+.copyright {
+    font-size: 0.8rem;
+    padding-top: 25px;
 }
